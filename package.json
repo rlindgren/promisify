@@ -1,8 +1,8 @@
 {
-  "name": "promisifiy",
+  "name": "promisify",
   "version": "0.0.1",
   "description": "convert node.js async functions to Q promise",
-  "main": "index.js",
+  "main": "promisify.js",
   "scripts": {
     "test": "mocha"
   },
