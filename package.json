@@ -1,0 +1,27 @@
+{
+  "name": "promisifiy",
+  "version": "0.0.1",
+  "description": "convert node.js async functions to Q promise",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tathata/promisify.git"
+  },
+  "keywords": [
+    "promise",
+    "Q",
+    "node"
+  ],
+  "author": "Ryan Lindgren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tathata/promisify/issues"
+  },
+  "homepage": "https://github.com/tathata/promisify",
+  "devDependencies": {
+    "q": "~1.1.2"
+  }
+}
