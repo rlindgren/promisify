@@ -28,23 +28,25 @@
 		var fn = typeof srcObject == 'function' ? srcObject : srcObject[fnName];
 
 		var promisifiedFn = function () {
+			var args = Array.prototype.slice.call(arguments);
 			var deferred = global.Q.defer();
-			var lastArg = arguments[arguments.length - 1];
+			var lastArg = args[args.length - 1];
 			var hasCallback = typeof lastArg === 'function';
 			var cb = hasCallback ? lastArg : function noop (){};
-			if (hasCallback) Array.prototype.pop.call(arguments);
-			Array.prototype.push.call(arguments, function () {
-				var args = Array.prototype.slice.call(arguments);
-				var error = args.shift(arguments);
-				cb.apply(null, arguments);
+			function _cb () {
+				var _args = Array.prototype.slice.call(arguments);
+				var error = _args.shift();
+				cb.apply(null, _args);
 				if (error) deferred.reject(error);
-				else deferred.resolve(args.pop());
-			});
-			fn.apply(this, arguments);
+				else deferred.resolve(_args.pop());
+			}
+			if (hasCallback) Array.prototype.pop.call(args);
+			Array.prototype.push.call(args, _cb);
+			fn.apply(this, args);
 			return deferred.promise;
 		};
-		promisifiedFn.name = fnName;
 		
+		promisifiedFn.name = fnName;
 		return promisifiedFn;
 	}
 
