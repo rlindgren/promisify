@@ -54,8 +54,8 @@
 		global.module.exports = promisify;
 	}
 
-	if (typeof Window !== 'undefined' && global instanceof Window) {
+	if (typeof window !== 'undefined' && global instanceof Window) {
 		global.Promisify = promisify;
 	}
 
-}(self));
+}(this));
