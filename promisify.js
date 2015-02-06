@@ -52,9 +52,7 @@
 
 	if (global.module && global.module.exports) {
 		global.module.exports = promisify;
-	}
-
-	if (typeof window !== 'undefined' && global instanceof Window) {
+	} else {
 		global.Promisify = promisify;
 	}
 
