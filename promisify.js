@@ -50,10 +50,6 @@
 		return promisifiedFn;
 	}
 
-	if (global.module && global.module.exports) {
-		global.module.exports = promisify;
-	} else {
-		global.Promisify = promisify;
-	}
+	global.Promisify = promisify;
 
 }(this));
